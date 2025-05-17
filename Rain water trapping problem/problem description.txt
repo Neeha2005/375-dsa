@@ -1,0 +1,36 @@
+💧 What is the Trapping Rain Water problem?
+Imagine you have bars of different heights arranged in a row (like buildings). When it rains, water gets trapped between the bars. You want to find out how much water is trapped.
+ 
+
+
+🧱 Example array:
+Let's say the bar heights are:
+arr = [3, 0, 2, 0, 4]
+⦁	Bar 0 has height 3
+⦁	Bar 1 has height 0 (very small)
+⦁	Bar 2 has height 2
+⦁	Bar 3 has height 0 (again small)
+⦁	Bar 4 has height 4 (tall)
+
+💡 How is water trapped?
+Water gets trapped only when there are taller bars on both sides of a small bar.
+
+To calculate water trapped on top of each bar:
+water_at_i = min(left_max[i], right_max[i]) - height[i]
+left_max[i]: tallest bar on the left including itself
+right_max[i]: tallest bar on the right including itself
+
+✅ Step-by-Step Solution:
+Build left_max (from left to right):
+left_max = [3, 3, 3, 3, 4]
+Build right_max (from right to left):
+right_max = [4, 4, 4, 4, 4]
+Water trapped at each position:
+water[0] = min(3, 4) - 3 = 0
+water[1] = min(3, 4) - 0 = 3
+water[2] = min(3, 4) - 2 = 1
+water[3] = min(3, 4) - 0 = 3
+water[4] = min(4, 4) - 4 = 0
+Total water = 0 + 3 + 1 + 3 + 0 = 7
+
+So, 7 units of water are trapped between the bars.
